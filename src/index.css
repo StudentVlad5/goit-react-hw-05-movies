@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+import-normalize /* bring in normalize.css styles */
 
 body {
   margin: 0;
@@ -8,8 +8,89 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+li{
+  text-decoration: none;
+  font-weight: 400;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+svg {
+  padding-right: 7px;
+}
+.Searchbar {
+  margin:20px 0;
+}
+.SearchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.SearchForm-input{
+  padding-left: 20px;
+  font-size: 26px;
+  min-width: 400px;
+  border-radius: 5px;
+}
+.SearchForm-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+  border: none;
+  background-color: white;
+  font-weight: 600;
+}
+.SearchForm-button-label {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 15px 35px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 7px;
+  color: white;
+  background: #55acee;
+  box-shadow: 0 5px 0 #3C93D5;
+  transition: .3s;
+}
+.SearchForm-button-label:hover {
+  background: #6FC6FF;
+}
+
+ul.GanreMove {
+  font-size: 26px;
+}
+.ListOfCast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ListOfCast__names {
+  font-size: 22px;
+  text-align: center;
+}
+.ListOfReviews {
+  font-size: 22px;
+  text-align: center;
+  list-style: none;
+}
+.Author {
+  font-size: 26px;
+  text-align: center;
+  font-weight: 500;
+}
+.EmptyCast {
+  font-size: 26px;
+  text-align: center;
+  font-weight: 500;
+  padding-left: 20px;
 }

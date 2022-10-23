@@ -1,10 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from 'react-router-dom';
 import { App } from 'components/App';
+import "modern-normalize";
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/">
+  <App/>
+   </BrowserRouter>
   </React.StrictMode>
 );
