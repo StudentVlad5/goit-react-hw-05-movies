@@ -10,7 +10,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/studentvlad5.github.io/goit-react-hw-05-movies/">
+    <BrowserRouter basename="/goit-react-hw-05-movies/">
   <App/>
    </BrowserRouter>
   </React.StrictMode>
