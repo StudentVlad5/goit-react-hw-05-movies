@@ -31,9 +31,11 @@ svg {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 .SearchForm-input{
-  padding-left: 20px;
+  padding: 15px;
+  margin-right: 10px;
   font-size: 26px;
   min-width: 400px;
   border-radius: 5px;
@@ -63,7 +65,14 @@ svg {
 .SearchForm-button-label:hover {
   background: #6FC6FF;
 }
-
+.SearchForm__BtnClear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 0;
+  border: none;
+}
 ul.GanreMove {
   font-size: 26px;
 }
