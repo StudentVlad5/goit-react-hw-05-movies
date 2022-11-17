@@ -5,6 +5,7 @@ export const MovieContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+   font-size: 24px;
 `
 export const LeftBar = styled.div`
   display: flex;

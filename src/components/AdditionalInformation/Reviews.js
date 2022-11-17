@@ -34,7 +34,7 @@ function Reviews ({movie_id}) {
             <ul className='ListOfReviews'>
                 { (total_results === 0) ? (<li className='EmptyCast'>Don't have any review yet</li>) : 
                 (list.results.map(({author, content, id}) =>(
-                    <li key={id}><p className='Author'>{author}</p><p>{content}</p></li>)))        
+                    <li key={id} className='ReviewsCast'><p className='Author'>{author}</p><p>{content}</p></li>)))        
                 }
             </ul>
         </>

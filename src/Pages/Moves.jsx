@@ -56,9 +56,9 @@ if (status ==='resolved') {
         <RightBar>
             <h1>About movie:  {original_title}</h1>
             <h2>{popularity.toFixed(2)} %</h2>
-                <div> {overview}</div>
+                <div className='overView'> {overview}</div>
                 <div>
-                    <ul className='GanreMove'>
+                    <ul className='GanreMove'><h2>Ganre of Movie:</h2>
                     {genres.map(key=>(<li key={key.id}>{key.name}</li>))}
                     </ul>
                 </div>
@@ -66,7 +66,7 @@ if (status ==='resolved') {
         </RightBar>
         </MovieContainer>
         <AddInfoBar>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className='loading'>Loading...</div>}>
             <Outlet />
         </Suspense>
         </AddInfoBar>

@@ -62,8 +62,10 @@ svg {
   box-shadow: 0 5px 0 #3C93D5;
   transition: .3s;
 }
-.SearchForm-button-label:hover {
+.SearchForm-button-label:hover{
   background: #6FC6FF;
+  transform: scale(1.15);
+  cursor: pointer;
 }
 .SearchForm__BtnClear {
   display: flex;
@@ -72,6 +74,10 @@ svg {
   background-color: white;
   padding: 0;
   border: none;
+}
+.SearchForm__BtnClear:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 ul.GanreMove {
   font-size: 26px;
@@ -84,6 +90,8 @@ ul.GanreMove {
   gap: 8px;
 }
 .ListOfCast__names {
+  width: 200px;
+  min-height: 499px;
   font-size: 22px;
   text-align: center;
 }
@@ -91,6 +99,9 @@ ul.GanreMove {
   font-size: 22px;
   text-align: center;
   list-style: none;
+}
+.ReviewsCast{
+  border-top: 2px solid black;
 }
 .Author {
   font-size: 26px;
@@ -102,4 +113,14 @@ ul.GanreMove {
   text-align: center;
   font-weight: 500;
   padding-left: 20px;
+}
+.styleAddInfo{
+  list-style-type: none;
+}
+.overView {
+  padding: 20px;
+}
+.loading{
+  font-size: 24px;
+  
 }

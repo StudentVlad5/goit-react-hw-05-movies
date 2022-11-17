@@ -8,18 +8,20 @@ import LocalStorage from '../components/LocalStorage/LocalStorage';
 
 function Searchbar ({onSubmitForm, setMove}) {
 const [searchName, setSearchName] = useState('');
-if(searchName === '' && JSON.parse(localStorage.getItem('searchName')) !==''){setSearchName(searchName=>JSON.parse(localStorage.getItem('searchName')))};
-
-
+const [inputName, setInputName] = useState('');
+if(inputName === '' && JSON.parse(localStorage.getItem('inputName')) !=='' && JSON.parse(localStorage.getItem('inputName')) !== null ){
+setInputName(JSON.parse(localStorage.getItem('inputName')));
+setSearchName(JSON.parse(localStorage.getItem('searchName')));
+};
 
 function handleChangeName (event) {
   event.preventDefault();
-   setSearchName(event.currentTarget.value.toLowerCase());
+   setInputName(event.currentTarget.value.toLowerCase());
    LocalStorage(event.currentTarget.value.toLowerCase());}
 
 function handleSubmit (event) {
   event.preventDefault();
-  if(searchName.trim() === ''){return toast.warn('Need more information for search', {
+  if(inputName.trim() === ''){return toast.warn('Need more information for search', {
     position: "top-center",
     autoClose: 2000,
     hideProgressBar: false,
@@ -28,26 +30,28 @@ function handleSubmit (event) {
     draggable: true,
     progress: undefined,
     })}
-  onSubmitForm(searchName);
-  setSearchName('')
+  setSearchName(inputName);
+  localStorage.setItem("searchName", JSON.stringify(inputName))
 }
 
 function clearInput(event){
   event.preventDefault();
   setSearchName('');
-  LocalStorage('')
+  localStorage.clear();
+  setInputName('');
 } 
 
 return (
+ 
   <><div className="Searchbar">
-    <form className="SearchForm" onSubmit={(event)=>handleSubmit}>
+    <form className="SearchForm" onSubmit={handleSubmit}>
       <input
         className="SearchForm-input"
         type="text"
         autoComplete="true"
         autoFocus={true}
         placeholder="Search name of movie"
-        value={searchName}
+        value={inputName}
         onChange={handleChangeName} />
       <button type="button" className="SearchForm__BtnClear" onClick={(e)=>clearInput(e)}><FaTimesCircle style={{ width: 40, height: 40, fill: 'rgba(84,78,114,1)' }} /></button>
       <button type="submit" className="SearchForm-button"><FaSearchengin style={{ width: 40, height: 40, fill: '#3C93D5' }} />
