@@ -24,6 +24,9 @@ code {
 svg {
   padding-right: 7px;
 }
+.container-wrep{
+  max-width: 1200px;
+}
 .Searchbar {
   margin:20px 0;
 }
