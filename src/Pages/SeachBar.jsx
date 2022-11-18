@@ -21,7 +21,6 @@ function handleChangeName (event) {
 
 function handleSubmit (event) {
   event.preventDefault();
-  console.log(inputName.length)
   if(inputName.trim().length <= 0){return alert('Need more information for search')}
   setSearchName(inputName);
   setLocalStorageSearch(inputName)
