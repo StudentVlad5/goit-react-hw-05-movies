@@ -1,4 +1,7 @@
-function LocalStorage  (name) {
+export function setLocalStorageInput  (name) {
     localStorage.setItem("inputName", JSON.stringify(name));
 }
-export default LocalStorage
+
+export function setLocalStorageSearch  (name) {
+    localStorage.setItem("searchName", JSON.stringify(name));
+}

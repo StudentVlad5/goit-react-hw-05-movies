@@ -1,37 +1,30 @@
 import {useState} from "react";
 import PropTypes from 'prop-types';
 import SearchMovie from '../components/SearchMovie/SearchMovie';
-import { toast } from 'react-toastify';
 import {FaSearchengin, FaTimesCircle} from "react-icons/fa";
-import LocalStorage from '../components/LocalStorage/LocalStorage';
+import {setLocalStorageInput, setLocalStorageSearch} from'../components/LocalStorage/LocalStorage';
 
 
 function Searchbar ({onSubmitForm, setMove}) {
 const [searchName, setSearchName] = useState('');
 const [inputName, setInputName] = useState('');
-if(inputName === '' && JSON.parse(localStorage.getItem('inputName')) !=='' && JSON.parse(localStorage.getItem('inputName')) !== null ){
-setInputName(JSON.parse(localStorage.getItem('inputName')));
-setSearchName(JSON.parse(localStorage.getItem('searchName')));
-};
+
+if(searchName.trim().length <= 0 && JSON.parse(localStorage.getItem('searchName')) !=='' && JSON.parse(localStorage.getItem('searchName')) !== null ){
+  setSearchName(JSON.parse(localStorage.getItem('searchName')));
+  };
+
 
 function handleChangeName (event) {
   event.preventDefault();
    setInputName(event.currentTarget.value.toLowerCase());
-   LocalStorage(event.currentTarget.value.toLowerCase());}
+   setLocalStorageInput(event.currentTarget.value.toLowerCase());}
 
 function handleSubmit (event) {
   event.preventDefault();
-  if(inputName.trim() === ''){return toast.warn('Need more information for search', {
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    })}
+  console.log(inputName.length)
+  if(inputName.trim().length <= 0){return alert('Need more information for search')}
   setSearchName(inputName);
-  localStorage.setItem("searchName", JSON.stringify(inputName))
+  setLocalStorageSearch(inputName)
 }
 
 function clearInput(event){
