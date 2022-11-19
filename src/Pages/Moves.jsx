@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { Suspense } from "react";
 import { BackLink } from 'components/BackLink/BackLink';
 import {LeftBar, MovieContainer, RightBar, AddInfoBar} from '../styled/Moves.styled'
 import AddInfo from "../components/AdditionalInformation/AddInfo";
 import NoFoto from '../Images/no_image.png';
 
-function Move ({movie_id}) {
+function Move () {
 const [item, setItem] = useState('');
 const [status, setStatus] = useState('idle');
 const [posterpage, setPosterpage] = useState('');
@@ -16,6 +16,7 @@ const [overview, setOverview] = useState('');
 const [genres, setGenres] = useState([]);
 const location = useLocation();
 const backLinkHref = location.state?.from ?? "/moves";
+const { movie_id } = useParams();
 
 
 useEffect(()=>{

@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react';
+import { useParams } from "react-router-dom";
 import NoFoto from '../../Images/no_image.png';
 
-function Credits ({movie_id}) {
+function Credits () {
     const [status, setStatus] = useState('idle'); 
     const [item, setItem] = useState('');
     const [list, setList] = useState([]);
     const [total_results, setTotal_results] = useState(0);
+    const { movie_id } = useParams();
 
     useEffect(()=>{
         let creditForFetch = `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=30a2ce985f394458475cdee9944c725b&language=en-US`;

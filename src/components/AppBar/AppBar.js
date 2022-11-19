@@ -4,7 +4,7 @@ import {HeaderItem, StyledLi, NavItem} from '../../styled/AppBar.styled';
 
 
 const navItems = [
-    {href: "home", text: "Home", icon : FaBook},
+    {href: "/", text: "Home", icon : FaBook},
     {href: "moves", text: "Movies", icon : FaCat},
 
 ]

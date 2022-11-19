@@ -32,11 +32,11 @@ export const App = () => {
     >
     
     <Routes>
-        <Route path='/' element={<AppBar/>}>
+          <Route path='/' element={<AppBar/>}>
           {/* <Route index element={<TrendingMoves setMove={setMove}/>} /> */}
-          <Route path='home' element={<TrendingMoves setMove={setMove}/>}/>
+          <Route path='/' element={<TrendingMoves setMove={setMove}/>}/>
           <Route path='moves' element={<Searchbar setMove={setMove}/>}/>
-          <Route path='moves/:movie_id' element={<Move movie_id={movie_id}  setMove={setMove}/>}>
+          <Route path='moves/:movie_id' element={<Move setMove={setMove}/>}>
                 <Route path='credits' element={<Credits movie_id={movie_id} />}/>
                 <Route path='rewier' element={<Reviews movie_id={movie_id} />}/>
             </Route>

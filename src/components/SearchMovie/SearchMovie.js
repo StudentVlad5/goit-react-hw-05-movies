@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import {StyledLi, NavItem, StyledSection, StyledTitle} from '../../styled/TrendingMoves.styled';
 import { useLocation } from 'react-router-dom';
+import {StyledLi, NavItem, StyledSection, StyledTitle} from '../../styled/TrendingMoves.styled';
 
 
 function SearchMovie ({searchMovie, setMove}) {

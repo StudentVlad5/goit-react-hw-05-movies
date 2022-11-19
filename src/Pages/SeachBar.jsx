@@ -1,13 +1,16 @@
 import {useState} from "react";
 import PropTypes from 'prop-types';
+import { useSearchParams } from "react-router-dom";
 import SearchMovie from '../components/SearchMovie/SearchMovie';
 import {FaSearchengin, FaTimesCircle} from "react-icons/fa";
 import {setLocalStorageInput, setLocalStorageSearch} from'../components/LocalStorage/LocalStorage';
 
 
-function Searchbar ({onSubmitForm, setMove}) {
+function Searchbar ({setMove}) {
 const [searchName, setSearchName] = useState('');
 const [inputName, setInputName] = useState('');
+// eslint-disable-next-line no-unused-vars
+const [searchParams, setSearchParams] = useSearchParams();
 
 if(searchName.trim().length <= 0 && JSON.parse(localStorage.getItem('searchName')) !=='' && JSON.parse(localStorage.getItem('searchName')) !== null ){
   setSearchName(JSON.parse(localStorage.getItem('searchName')));
@@ -22,6 +25,7 @@ function handleChangeName (event) {
 function handleSubmit (event) {
   event.preventDefault();
   if(inputName.trim().length <= 0){return alert('Need more information for search')}
+  setSearchParams({ name: inputName});
   setSearchName(inputName);
   setLocalStorageSearch(inputName)
 }

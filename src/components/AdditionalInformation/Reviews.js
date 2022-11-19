@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react';
+import { useParams } from "react-router-dom";
 
-function Reviews ({movie_id}) {
+function Reviews () {
     const [status, setStatus] = useState('idle'); 
     const [item, setItem] = useState('');
     const [list, setList] = useState([]);
     const [total_results, setTotal_results] = useState(0);
+    const { movie_id } = useParams();
 
 
     useEffect(()=>{
