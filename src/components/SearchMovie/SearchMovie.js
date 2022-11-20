@@ -13,7 +13,7 @@ function SearchMovie ({searchMovie, setMove}) {
 
     useEffect(()=>{
         
-        let listForFetch = `https://api.themoviedb.org/3/search/movie?api_key=30a2ce985f394458475cdee9944c725b&page=1&query=${searchMovie}`;
+        let listForFetch = `https://api.themoviedb.org/3/search/movie?api_key=30a2ce985f394458475cdee9944c725b&page=1&query=${searchMovie}&sort_by=popularity.desc`;
     
         async function moveList () {
             setStatus('pending');

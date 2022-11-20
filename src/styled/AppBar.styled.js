@@ -14,7 +14,6 @@ export const HeaderItem = styled.header`
     font-size: 26px;
     text-decoration: none;
     padding: 10px 10px;
-  
     &:hover,
     &.active {
       background-color: rgba(84, 78, 114, 1);
@@ -25,6 +24,7 @@ export const HeaderItem = styled.header`
     &.active {
       color: #f8dc2f;
     }
+
     `;
 export const StyledLi = styled.li`
     list-style: none;
@@ -33,16 +33,18 @@ export const StyledLi = styled.li`
     font-size: 26px;
     text-decoration: none;
     padding: 10px 10px;
-&:hover,
-&.active {
-    background-color: rgba(84, 78, 114, 1);
-    border-radius: 10px 0px 0px 10px;
-    color: white;
-}
-background-color: ${(props) =>
-    props.path ? "rgba(84, 78, 114, 1)" : "white"};
-  border-radius: ${(props) => (props.path ? "0px 0px 0px 10px" : "0px")};
-  color: ${(props) => (props.path ? "white" : "rgba(84, 78, 114, 1)")};
+
+    &:hover,
+    &.active {
+      background-color: rgba(84, 78, 114, 1);
+      border-radius: 10px 0px 0px 10px;
+      color: white;
+    }
+  
+    &.active {
+      color: #f8dc2f;
+    }
+
 `;
 
 

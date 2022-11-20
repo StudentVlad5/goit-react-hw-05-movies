@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { FaCat, FaBook } from "react-icons/fa";
+import { FaCat, FaBook, FaCrown } from "react-icons/fa";
 import {HeaderItem, StyledLi, NavItem} from '../../styled/AppBar.styled';
 
 
 const navItems = [
-    {href: "/", text: "Home", icon : FaBook},
+    {href: "/", text: "Home", icon : FaCrown},
+    {href: `/top_movies/page=1`, text: "Top Moves", icon : FaBook},
     {href: "moves", text: "Movies", icon : FaCat},
 
 ]

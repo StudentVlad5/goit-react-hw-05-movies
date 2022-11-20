@@ -47,3 +47,14 @@ export const StyledTitle = styled.div`
 min-width: 300px;
 max-width: 300px;
 `
+export const NumberPage  = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 3px;
+  width: 100%;
+`;

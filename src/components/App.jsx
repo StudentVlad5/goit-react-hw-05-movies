@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import { lazy } from "react";
+import Home from './Home/Home';
 import TrendingMoves from '../Pages/TrendingMoves';
 import Searchbar from '../Pages/SeachBar';
 import Move from '../Pages/Moves';
@@ -12,6 +13,7 @@ const Credits = lazy(() => import('./AdditionalInformation/Credits'));
 
 export const App = () => {
 
+  // eslint-disable-next-line no-unused-vars
   let [movie_id, setMovie_Id] = useState('');
 
   function setMove (itemMove) {
@@ -34,11 +36,12 @@ export const App = () => {
     <Routes>
           <Route path='/' element={<AppBar/>}>
           {/* <Route index element={<TrendingMoves setMove={setMove}/>} /> */}
-          <Route path='/' element={<TrendingMoves setMove={setMove}/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/top_movies/page=:page' element={<TrendingMoves setMove={setMove}/>}/>
           <Route path='moves' element={<Searchbar setMove={setMove}/>}/>
           <Route path='moves/:movie_id' element={<Move setMove={setMove}/>}>
-                <Route path='credits' element={<Credits movie_id={movie_id} />}/>
-                <Route path='rewier' element={<Reviews movie_id={movie_id} />}/>
+                <Route path='credits' element={<Credits />}/>
+                <Route path='rewier' element={<Reviews />}/>
             </Route>
           </Route>
         <Route path='*' element={<NotFound/>}/>

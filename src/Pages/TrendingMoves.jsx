@@ -1,15 +1,19 @@
 import {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
-import {StyledLi, NavItem, StyledSection, StyledTitle} from '../styled/TrendingMoves.styled';
+import { useLocation, useParams } from 'react-router-dom';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 // import PropTypes from 'prop-types';
+import {StyledLi, NavItem, StyledSection, StyledTitle, NumberPage} from '../styled/TrendingMoves.styled';
 
 function TrendingMoves ({setMove}) {
 const [listTrendsMoves, setlistTrendsMoves] = useState([]);
+const [page, setPage] = useState(1);
+const [totalPages, setTotalPages] = useState(1);
 const [status, setStatus] = useState('idle');
 const location = useLocation();
+const { pageNumber } = useParams();
 
 useEffect(()=>{
-    let itemForFetch = `https://api.themoviedb.org/3/trending/movie/day?api_key=30a2ce985f394458475cdee9944c725b`
+    let itemForFetch = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&api_key=30a2ce985f394458475cdee9944c725b&sort_by=popularity.desc`
 
     async function listOfTrendMoves () {
         setStatus('pending');
@@ -18,15 +22,18 @@ useEffect(()=>{
         return Promise.reject(new Error(`Can't find anything`))})
         .then(item => {
             setlistTrendsMoves(item.results);
+            setTotalPages(item.total_pages);
+            console.log(pageNumber, page);
             setStatus('resolved')
         })
         .catch(error=>{
             console.log(error);
         })
     }
-    listOfTrendMoves() 
+    if(pageNumber !== page) {listOfTrendMoves()}
 }
-,[])
+,[page, pageNumber])
+
 
 function moves (event) {let numberMove = event.target.dataset['key'];
 setMove(numberMove)}
@@ -40,6 +47,13 @@ if (status ==='resolved') {return (
             <ul onClick={(event)=>{moves(event)}}> 
                 {listTrendsMoves.map(({id,title, name}) =>(<StyledLi key={id}><NavItem to={`/moves/${id}`} data-key={id} state={{ from: location }}>{name ?? title}</NavItem></StyledLi>))}
             </ul>
+            <div>
+                <NumberPage>
+                    {page > 1 && <FaArrowAltCircleLeft onClick={()=>setPage(page=>page-1)}style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/>}
+                    <span style={{fontSize: '50px' , color:'rgba(84,78,114,1)', padding: '40px'}}>{page} of {totalPages}</span>
+                    {page < totalPages && <FaArrowAltCircleRight onClick={()=>setPage(page=>page+1)} style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/>}
+                </NumberPage>
+            </div>
         </div>
     </StyledSection>
 )}}
