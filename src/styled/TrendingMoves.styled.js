@@ -58,3 +58,11 @@ export const NumberPage  = styled.div`
   padding: 8px 3px;
   width: 100%;
 `;
+
+export const NavNumber = styled(NavLink)`
+
+  &:hover,
+  &.active {
+transform: scale(1.2);
+  }
+  `;

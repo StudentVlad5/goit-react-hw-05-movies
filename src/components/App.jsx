@@ -37,7 +37,7 @@ export const App = () => {
           <Route path='/' element={<AppBar/>}>
           {/* <Route index element={<TrendingMoves setMove={setMove}/>} /> */}
           <Route path='/' element={<Home/>}/>
-          <Route path='/top_movies/page=:page' element={<TrendingMoves setMove={setMove}/>}/>
+          <Route path='/top_movies/page=:pageNumber' element={<TrendingMoves setMove={setMove}/>}/>
           <Route path='moves' element={<Searchbar setMove={setMove}/>}/>
           <Route path='moves/:movie_id' element={<Move setMove={setMove}/>}>
                 <Route path='credits' element={<Credits />}/>
