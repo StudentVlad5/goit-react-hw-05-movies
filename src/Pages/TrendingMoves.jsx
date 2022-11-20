@@ -12,6 +12,8 @@ const [status, setStatus] = useState('idle');
 const location = useLocation();
 const { pageNumber } = useParams();
 
+console.log(pageNumber);
+
 
 useEffect(()=>{
     let itemForFetch = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&api_key=30a2ce985f394458475cdee9944c725b&sort_by=popularity.desc`
@@ -26,6 +28,7 @@ useEffect(()=>{
             setTotalPages(item.total_pages);
             setPage(item.page);
             console.log('pageNumber: ', pageNumber, 'page: ',page);
+            console.log(item)
             setStatus('resolved')
         })
         .catch(error=>{
