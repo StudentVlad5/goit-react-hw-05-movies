@@ -23,6 +23,7 @@ useEffect(()=>{
         .then(item => {
             setlistTrendsMoves(item.results);
             setTotalPages(item.total_pages);
+            setPage(item.page);
             console.log(pageNumber, page);
             setStatus('resolved')
         })
