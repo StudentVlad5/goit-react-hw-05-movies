@@ -13,7 +13,7 @@ function SearchMovie ({searchMovie, setMove}) {
 
     useEffect(()=>{
         
-        let listForFetch = `https://api.themoviedb.org/3/search/movie?api_key=30a2ce985f394458475cdee9944c725b&page=1&query=${searchMovie}&sort_by=popularity.desc`;
+        let listForFetch = `https://api.themoviedb.org/3/search/movie?api_key=30a2ce985f394458475cdee9944c725b&page=1&query=${searchMovie}`;
     
         async function moveList () {
             setStatus('pending');
@@ -44,7 +44,7 @@ function SearchMovie ({searchMovie, setMove}) {
             <h1>List of  moves: {total_results}</h1>
         </StyledTitle>
         <ul onClick={(event)=>{moves(event)}}>
-            {list.map(({id,title}) =>(<StyledLi key={id}><NavItem to={`/moves/${id}`} data-key={id} state={{from: location}}>{title}</NavItem></StyledLi>))}
+            {list.sort((a,b)=>b.popularity-a.popularity).map(({id,title}) =>(<StyledLi key={id}><NavItem to={`/moves/${id}`} data-key={id} state={{from: location}}>{title}</NavItem></StyledLi>))}
         </ul>
     </StyledSection>
 

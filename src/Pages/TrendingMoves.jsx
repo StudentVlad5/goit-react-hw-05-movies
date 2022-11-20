@@ -12,11 +12,9 @@ const [status, setStatus] = useState('idle');
 const location = useLocation();
 const { pageNumber } = useParams();
 
-console.log(pageNumber);
-
 
 useEffect(()=>{
-    let itemForFetch = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&api_key=30a2ce985f394458475cdee9944c725b&sort_by=popularity.desc`
+    let itemForFetch = `https://api.themoviedb.org/3/trending/movie/day?page=${pageNumber}&api_key=30a2ce985f394458475cdee9944c725b&sort_by=popularity.desc`
 
     async function listOfTrendMoves () {
         setStatus('pending');
@@ -27,8 +25,6 @@ useEffect(()=>{
             setlistTrendsMoves(item.results);
             setTotalPages(item.total_pages);
             setPage(item.page);
-            console.log('pageNumber: ', pageNumber, 'page: ',page);
-            console.log(item)
             setStatus('resolved')
         })
         .catch(error=>{
@@ -54,9 +50,9 @@ if (status ==='resolved') {return (
             </ul>
             <div>
                 <NumberPage>
-                    {page > 1 && <NavNumber to={`/top_movies/page=${page}`}> <FaArrowAltCircleLeft onClick={()=>setPage(page=>page-1)}style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/> </NavNumber>}
+                    {page > 1 && <NavNumber to={`/top_movies/page=${page-1}`}> <FaArrowAltCircleLeft onClick={()=>setPage(page=>page-1)}style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/> </NavNumber>}
                     <span style={{fontSize: '50px' , color:'rgba(84,78,114,1)', padding: '40px'}}>{page} of {totalPages}</span>
-                    {page < totalPages && <NavNumber to={`/top_movies/page=${page}`}><FaArrowAltCircleRight onClick={()=>setPage(page=>page+1)} style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/></NavNumber>}
+                    {page < totalPages && <NavNumber to={`/top_movies/page=${page+1}`}><FaArrowAltCircleRight onClick={()=>setPage(page=>page+1)} style={{fontSize: '50px' , fill:'rgba(84,78,114,1)'}}/></NavNumber>}
                 </NumberPage>
             </div>
         </div>
